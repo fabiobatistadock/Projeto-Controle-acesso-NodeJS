@@ -7,13 +7,59 @@ show databases;
 use portal_noticias;
 
 show tables;
-
 create table noticias(id noticia int not null primary key auto_increment);
+alter table noticias add titulo varchar(100);
+alter table noticias add noticia text;
+alter table noticias add resumo varchar(100);
+alter table noticias add autor varchar(30);
+alter table noticias add data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+alter table noticias add data_noticia date;
 
+alter table noticias add data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+alter table noticias data_noticia TIMESTAMP to date;
+ALTER TABLE noticias CHANGE data_noticia data_noticia date;
+update table noticias change data_noticia TIMESTAMP to date;
 
 show tables;
-selct * from noticias;
 
-insert into noticias(titulo, noticia) values('titulo da noticia', 'conteudo da noticia');
-insert into noticias(titulo, noticia) values('Bolsonaro vence ação de Impeachemt contra STF', 'Dictum condimentum metus mollis tincidunt sollicitudin commodo ipsum fusce.');
-insert into noticias(titulo, noticia) values('STF não comprova veracidade de suas afirmações', 'Cursus iaculis curae eu consectetur dui aliquet elementum fames, dui fermentum.');
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 1', 'Conteudo da noticia1',
+'Resumo da Notícia 1', 'Nome do Autor', "2021-09-20");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 2', 'Conteudo da noticia2',
+'Resumo da Notícia 2', 'Lívia Eloá Allana Rezende', "2021-09-20");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 2', 'Conteudo da noticia 2',
+'Resumo da Notícia 2', 'Fernando Juan Matheus Rezende', "2021-09-20");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 3', 'Conteudo da noticia 3',
+'Resumo da Notícia 3', 'Fernando Nicolas Caldeira', "2021-09-20");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 4', 'Conteudo da noticia 4',
+'Resumo da Notícia 4', 'Maitê Marina Caldeira', "2021-09-19");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 4', 'Conteudo da noticia 4',
+'Resumo da Notícia 4', 'Henry Carlos Eduardo Souza', "2021-09-19");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 6', 'Conteudo da noticia 6',
+'Resumo da Notícia 6', 'Arthur Benedito Souza', "2021-09-19");
+
+insert into noticias(titulo, noticia, resumo, autor, data_criacao)
+values('Titulo da noticia 7', 'Conteudo da noticia 7',
+'Resumo da Notícia 7', 'Andreia Márcia', "2021-09-18");
+
+UPDATE noticias SET noticia = 'Conteudo da noticia 1' WHERE noticia = 'Conteudo da noticia1';
+UPDATE noticias SET noticia = 'Conteudo da noticia 2' WHERE noticia like "%noticia2";
+UPDATE noticias SET noticia = 'Conteudo da noticia 2', resumo = 'Resumo da notícia 2' WHERE noticia = 'Conteudo da noticia2';;
+UPDATE noticias SET noticia = 'Conteudo da noticia 2' WHERE noticia = (select noticia FROM noticias where resumo like "%notica2");
+
+UPDATE noticias SET data_noticia = '2021-09-20' WHERE resumo like '%Noticia 1';
+UPDATE noticias SET data_noticia = '2021-09-20' WHERE id_noticia between '2' and '3';
+
+select * from noticias;
