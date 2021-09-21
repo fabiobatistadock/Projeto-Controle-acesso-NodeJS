@@ -8,6 +8,5 @@ module.exports = function(app){
         noticiasModel.getNoticia(function(error, result){
             res.render('noticias/noticia', { noticia : result });
         });
-
     });
 }
